@@ -1,7 +1,7 @@
-Booter dependency injection
+Booter react redux annotations
 ---
 
-## Spring aka DI
+## Uses booter-di
 
 #### Run & build
 ```
