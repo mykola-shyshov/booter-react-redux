@@ -1,0 +1,25 @@
+{
+  "name": "booter-react-redux",
+  "version": "0.1.0",
+  "description": "Booter react redux",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "Nick Shishov",
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "registry": "http://nexus.t1.tenet/nexus/content/repositories/npm-hosted/"
+  },
+  "dependencies": {
+    "booter-di": "^0.1.4"
+  }
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "run-sequence": "^1.2.2"
+  }
+}
