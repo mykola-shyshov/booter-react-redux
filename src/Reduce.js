@@ -1,4 +1,4 @@
-export function Reduce(action) {
+export default function Reduce(action) {
   return function(target, prop, descriptor) {
     descriptor.value.__reducer = {
       action: action

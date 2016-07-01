@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getActionCreator} from './ReactReduxApplication';
 
-export function Container(props) {
+export default function Container(props) {
   let actionCreators = props.creators;
   let storeInit = props.store.init;
 

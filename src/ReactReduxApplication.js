@@ -6,7 +6,7 @@ import {context} from 'booter-di';
 let store;
 let creators = {};
 
-export function ReactReduxApplication(props) {
+export default function ReactReduxApplication(props) {
   console.log('ReactReduxApplication');
 
   let reducers = props.reducers;
@@ -35,7 +35,6 @@ export function ReactReduxApplication(props) {
 
   // TODO: inherit
   return function(clazz) {
-//     let reduxRouterMiddleware = routerMiddleware(history);
     let reduxRouterMiddleware = routerMiddleware();
     let middleware = [reduxRouterMiddleware];
 
