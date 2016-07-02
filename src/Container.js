@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getActionCreator} from './ReactReduxApplication';
+import {ApplicationContext} from 'booter-di';
 
 export default function Container(props) {
   let actionCreators = props.creators;
@@ -13,7 +13,7 @@ export default function Container(props) {
     let constructor = function() {
 
       actionCreators.forEach((crName) => {
-        let bean = getActionCreator(crName);
+        let bean = ApplicationContext.getContext().getBean(crName);
 
         if (bean == undefined) {
           throw new Error('bean is not defined, ' + crName);

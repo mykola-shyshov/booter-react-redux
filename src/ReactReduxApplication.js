@@ -1,19 +1,19 @@
 import {createStore, applyMiddleware} from 'redux';
 import {combineReducers} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
-import {context} from 'booter-di';
+import {ApplicationContext} from 'booter-di';
 
 let store;
 let creators = {};
 
 export default function ReactReduxApplication(props) {
-  console.log('ReactReduxApplication');
+  console.log('running app as ReactReduxApplication');
 
   let reducers = props.reducers;
   creators = props.creators;
 
   Object.keys(creators).forEach((name) => {
-    context.provideBean(name, creators[name]);
+    ApplicationContext.getContext().provideBean(name, creators[name]);
   });
 
   let reducersFns = {};
@@ -27,11 +27,8 @@ export default function ReactReduxApplication(props) {
       methods[reducer[key].__rducer.action] = reducer[key];
     });
 
-    console.log('methods', methods);
     reducersFns[reducerName] = wrapReducerMethods(methods);
   });
-
-  console.log('reducers fns', reducersFns);
 
   // TODO: inherit
   return function(clazz) {
@@ -43,10 +40,6 @@ export default function ReactReduxApplication(props) {
     store = wrappderCreateStoreFn(combineReducers(reducersFns));
     return clazz;
   }
-}
-
-export function getActionCreator(name) {
-  return context.getBean(name);
 }
 
 function wrapReducerMethods(actionHandlers) {
